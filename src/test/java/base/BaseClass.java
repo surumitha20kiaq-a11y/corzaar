@@ -2,6 +2,7 @@ package base;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -150,6 +151,30 @@ public class BaseClass {
     	  }
       }
 }
+     public void clickCheckbox(WebElement checkbox) {
+
+    	    if (checkbox.isSelected()) {
+    	        checkbox.click();
+    	    }
+
+    	    checkbox.click();
+    	}
+     public void clearDeliveryCheckboxes(
+    	        WebElement live,
+    	        WebElement classroom,
+    	        WebElement hybrid,
+    	        WebElement selfPaced) {
+
+    	    List<WebElement> checkboxes = Arrays.asList(
+    	        live, classroom, hybrid, selfPaced
+    	    );
+
+    	    for (WebElement checkbox : checkboxes) {
+    	        if (checkbox.isSelected()) {
+    	            checkbox.click();
+    	        }
+    	    }
+    	}
 //	--------------------Alerts------------------------------------------
 
 	public static void acceptAlert() {
@@ -308,7 +333,9 @@ public class BaseClass {
     	  return element.isSelected();
       }
 
-	    
+	    public static int getElementCount(List<WebElement> elements) {
+	    	return elements.size();
+	    	}
 	
 
 	//	----------------JS executor--------------

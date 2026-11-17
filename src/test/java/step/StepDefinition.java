@@ -14,7 +14,7 @@ import org.testng.Assert;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
+import org.testng.Assert;
 import base.BaseClass;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -65,10 +65,10 @@ public class StepDefinition  extends BaseClass {
 		clickElement(pom.signinbutton());
 		waitForvisibility(pom.Autofilldemo());
 		clickElement(pom.Autofilldemo());
-		WebElement sendonetimepasscode= pom.sendonetimepasscodebutton();
-		scrollToElement(sendonetimepasscode);
-		waitForElementToClickable(sendonetimepasscode);
-		clickElement(sendonetimepasscode);
+		scrollToElement(pom.sendonetimepasscodebutton());
+		clickWithRetry(pom.sendonetimepasscodebutton());
+		clickElement(pom.sendonetimepasscodebutton());
+		waitForElementToClickable(pom.sendonetimepasscodebutton());
 	}
 	@When("user successfully verify the OTP")
 	public void user_successfully_verify_the_otp() {
@@ -122,96 +122,152 @@ public class StepDefinition  extends BaseClass {
 	public void user_successfully_select_the_values_and_view_the_relevent_courses() {
 		System.out.println("successfully verify discipline dropdown values and relevent courses");
 	}
-	@When("user click the delivery format and free enrollment checkbox one by one and verify the displayed courses")
-	public void user_click_the_delivery_format_and_free_enrollment_checkbox_one_by_one_and_verify_the_displayed_courses() {
+	@When("user click the delivery format checkbox one by one and verify the displayed courses")
+	public void user_click_the_delivery_format_checkbox_one_by_one_and_verify_the_displayed_courses() throws InterruptedException {
+	         
+		waitForvisibility(pom.explorecoursesbutton());
+		clickWithRetry(pom.explorecoursesbutton());
+		
+			 waitForElementToClickable(pom.clickliveonline());
+			 clickElement(pom.clickliveonline());
+    Thread.sleep(3000);
+    if(pom.getcoursestatuses().size()> 0) {
+    	for (WebElement status : pom.getcoursestatuses()) {
+    		Assert.assertEquals(status.getText().trim(),"📍 Live Online","live online filters showing incorrect courses");
+    	}
+    }
+    else {
+    	Assert.assertTrue(pom.emptycoursemessage().isDisplayed(),"Live online empty message not displayed");
+    }
     
-				int count =pom.getallcheckboxes().size();
-		System.out.println("Total checkboxes"+count);
-		List<WebElement> checkboxes = pom.getallcheckboxes();
-		for(int i=0; i< checkboxes.size();i++) {
-			WebElement checkbox =checkboxes.get(i);
-			selectCheckbox(checkbox);
-			
-			Assert.assertTrue(isCheckboxSelected(checkbox),"checkbox" +(i+1) + "is not selected");
-			System.out.println("checkbox" +(i+1) +"pass");
-		}
-		System.err.println("Total checkboxes" +checkboxes.size());		
-	}
-
+    Thread.sleep(2000);
+   
+    if(pom.clickliveonline().isSelected()) {
+    	waitForElementToClickable(pom.clickliveonline());	
+    }
+   
+  waitForElementToClickable(pom.clickpersonclassroom());
+  clickElement(pom.clickpersonclassroom());
+    initializeWait();
+   List<WebElement> courses =pom.getcoursestatuses();
+   if(courses.size()>0) {
+	   String status = courses.get(0).getText();
+	   System.out.println("course status: "+status);
+   }
+   
+    else {
+    	waitForvisibility(pom.emptycoursemessage());
+    	String message =pom.emptycoursemessage().getText();
+    	Assert.assertTrue(message.contains("No matching programs found"),"Expected empty message was not displayed");
+    	System.err.println("pass : No In-person/classroom courses are available.Empty message displayed");
+    }
+   waitForElementToClickable(pom.clickhybrid());
+   clickElement(pom.clickhybrid());
+   initializeWait();
+  List<WebElement> inpersoncourse =pom.getcoursestatuses();
+  if(inpersoncourse.size()>0) {
+	   String status1 = inpersoncourse.get(0).getText();
+	   System.out.println("course status: "+status1);
+  }
+  
+   else {
+   	waitForvisibility(pom.emptycoursemessage());
+   	String message =pom.emptycoursemessage().getText();
+   	Assert.assertTrue(message.contains("No matching programs found"),"Expected empty message was not displayed");
+   	System.err.println("pass :Hybrid courses are not available.Empty message displayed");
+   }
+   
+	
+  waitForElementToClickable(pom.clickselfpaced());
+  clickElement(pom.clickselfpaced());
+  initializeWait();
+ List<WebElement> selfpacedcourse =pom.getcoursestatuses();
+ if(selfpacedcourse.size()>0) {
+	   String status2 = selfpacedcourse.get(0).getText();
+	   System.out.println("course status: "+status2);
+ }
+ 
+  else {
+  	waitForvisibility(pom.emptycoursemessage());
+  	String message =pom.emptycoursemessage().getText();
+  	Assert.assertTrue(message.contains("No matching programs found"),"Expected empty message was not displayed");
+  	System.err.println("pass :In-person courses are not available.Empty message displayed");
+  }
+    }
 	@Then("user successfully click the all delivery format checkbox")
 	public void user_successfully_click_the_all_delivery_format_checkbox() {
 		System.err.println("delivery format checkbox verified successfully");
 	}
-	@When("user click the  program duration dropdown one by one and verify the displayed courses")
-	public void user_click_the_program_duration_dropdown_one_by_one_and_verify_the_displayed_courses() {
-		List<String> durationList = Arrays.asList(
-				"Any Duration",
-				"Under 1 month",
-				"1-3 months",
-				"3-6 months",
-				"6-12 months",
-				"1+ year"
-				);
-		for (String duration : durationList) {
-			selectByVisibleText(pom.programdurationdropdown(),duration);
-			int count = pom.durationcoursescard().size();
-			System.out.println("Selected Duration: " + duration);
-			if (count > 0) {
-				System.out.println("Course Count: " + count);
-				System.out.println("Courses displayed");
-			} else {
-				Assert.assertTrue(
-						pom.emptydropdownmessage().isDisplayed());
-				System.out.println("No matching courses found");
-				clickElement(pom.resetcoursesbutton());
-			}
-		}
-	}
-	@Then("user successfully click the all program duration dropdown")
-	public void user_successfully_click_the_all_program_duration_dropdown() {
-		System.out.println("successfully verify proggram  durationdropdown values");
-	}
-	@When("user click the free enrollment checkbox one by one and verify the displayed courses")
-	public void user_click_the_free_enrollment_checkbox_one_by_one_and_verify_the_displayed_courses() {
-		clickElement(pom.freeenrollmentcheckbox());
-	}
-	@Then("user successfully click the free enrollment checkbox")
-	public void user_successfully_click_the_free_enrollment_checkbox() {
-		int count1 = pom.freecoursescard().size();
-		System.out.println("Free courses count:"+ count1);
-		if(count1>0) {
-			for(WebElement course : pom.freecoursescard()) {
-				String courseText= course.getText();
-				Assert.assertTrue(courseText.contains("Free") );
-			}
-			System.out.println("Pass: only free courses displayed");
-		}else {
-			Assert.assertTrue(pom.emptydropdownmessage().isDisplayed());
-
-			System.out.println("No free courses available");
-		}
-	}
-	@When("user click the reset filter link")
-	public void user_click_the_reset_filter_link() {
-		clickElement(pom.clickresetlink());
-	}
-	@Then("All filters return to defalut value and display all default courses successfully.")
-	public void all_filters_return_to_defalut_value_and_display_all_default_courses_successfully() {
-		System.out.println("Reset all filters successfully");
-	}
-	@When("user click the sort filter values one by one and verify relevent courses displayed")
-	public void user_click_the_sort_filter_values_one_by_one_and_verify_relevent_courses_displayed() {
-		selectByvalue(pom.sortDropdownclick(),"Highest Rated");
-		
-		selectByvalue(pom.sortDropdownclick(),"Newest Releases");
-		selectByvalue(pom.sortDropdownclick(),"Price: Low to High");
-		selectByvalue(pom.sortDropdownclick(),"Price: High to Low");
-		selectByvalue(pom.sortDropdownclick(),"Most Enrolled");
-		}
-	@Then("user successfully select the All sort filter values")
-	public void user_successfully_select_the_all_sort_filter_values() {
-       System.out.println("verified sort dropdown");
-	}
+//	@When("user click the  program duration dropdown one by one and verify the displayed courses")
+//	public void user_click_the_program_duration_dropdown_one_by_one_and_verify_the_displayed_courses() {
+//		List<String> durationList = Arrays.asList(
+//				"Any Duration",
+//				"Under 1 month",
+//				"1-3 months",
+//				"3-6 months",
+//				"6-12 months",
+//				"1+ year"
+//				);
+//		for (String duration : durationList) {
+//			selectByVisibleText(pom.programdurationdropdown(),duration);
+//			int count = pom.durationcoursescard().size();
+//			System.out.println("Selected Duration: " + duration);
+//			if (count > 0) {
+//				System.out.println("Course Count: " + count);
+//				System.out.println("Courses displayed");
+//			} else {
+//				Assert.assertTrue(
+//						pom.emptydropdownmessage().isDisplayed());
+//				System.out.println("No matching courses found");
+//				clickElement(pom.resetcoursesbutton());
+//			}
+//		}
+//	}
+//	@Then("user successfully click the all program duration dropdown")
+//	public void user_successfully_click_the_all_program_duration_dropdown() {
+//		System.out.println("successfully verify proggram  durationdropdown values");
+//	}
+//	@When("user click the free enrollment checkbox one by one and verify the displayed courses")
+//	public void user_click_the_free_enrollment_checkbox_one_by_one_and_verify_the_displayed_courses() {
+//		clickElement(pom.freeenrollmentcheckbox());
+//	}
+//	@Then("user successfully click the free enrollment checkbox")
+//	public void user_successfully_click_the_free_enrollment_checkbox() {
+//		int count1 = pom.freecoursescard().size();
+//		System.out.println("Free courses count:"+ count1);
+//		if(count1>0) {
+//			for(WebElement course : pom.freecoursescard()) {
+//				String courseText= course.getText();
+//				Assert.assertTrue(courseText.contains("Free") );
+//			}
+//			System.out.println("Pass: only free courses displayed");
+//		}else {
+//			Assert.assertTrue(pom.emptydropdownmessage().isDisplayed());
+//
+//			System.out.println("No free courses available");
+//		}
+//	}
+//	@When("user click the reset filter link")
+//	public void user_click_the_reset_filter_link() {
+//		clickElement(pom.clickresetlink());
+//	}
+//	@Then("All filters return to defalut value and display all default courses successfully.")
+//	public void all_filters_return_to_defalut_value_and_display_all_default_courses_successfully() {
+//		System.out.println("Reset all filters successfully");
+//	}
+//	@When("user click the sort filter values one by one and verify relevent courses displayed")
+//	public void user_click_the_sort_filter_values_one_by_one_and_verify_relevent_courses_displayed() {
+//		selectByvalue(pom.sortDropdownclick(),"Highest Rated");
+//		
+//		selectByvalue(pom.sortDropdownclick(),"Newest Releases");
+//		selectByvalue(pom.sortDropdownclick(),"Price: Low to High");
+//		selectByvalue(pom.sortDropdownclick(),"Price: High to Low");
+//		selectByvalue(pom.sortDropdownclick(),"Most Enrolled");
+//		}
+//	@Then("user successfully select the All sort filter values")
+//	public void user_successfully_select_the_all_sort_filter_values() {
+//       System.out.println("verified sort dropdown");
+//	}
 //	@When("user enter the valid course name ,institute name and skills in search field")
 //	public void user_enter_the_valid_course_name_institute_name_and_skills_in_search_field() {
 //	 

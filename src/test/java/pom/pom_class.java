@@ -66,8 +66,21 @@ public class pom_class {
 	      @FindBy(xpath="//h3[contains(text(),'Data Analytics with Python')]")
 	      private WebElement dataanalytics;
 	      
-	      @FindBy(xpath="//div[@class='w-5 h-5 rounded-md border transition-all flex items-center justify-center border-slate-300 dark:border-slate-600 bg-white dark:bg-dark-surface peer-checked:bg-brand peer-checked:border-brand text-white peer-focus:ring-2 peer-focus:ring-brand/20']")
+	      @FindBy(xpath="//input[(@type='checkbox' and @id='live-online' or @id='in-person-/-classroom' or @id='hybrid' or @id='self-paced')]")
 	      private List<WebElement> allcheckboxes;
+	      
+	      @FindBy(xpath="//input[@id='live-online']/following-sibling::div")
+	      private WebElement liveonline;
+	      
+	      @FindBy(xpath="//input[@id='in-person-/-classroom']/following-sibling::div")
+	      private WebElement personclassroom;
+	      
+	      @FindBy(xpath="//input[@id='hybrid']/following-sibling::div")
+	      private WebElement hybrid;
+	      
+	      @FindBy(xpath="//input[@id='self-paced']/following-sibling::div")
+	      private WebElement selfpaced;
+	      
 	      
 	      @FindBy(xpath="//select[.//option[contains(.,'Any Duration')]]")
 	      private WebElement programduration;
@@ -75,8 +88,7 @@ public class pom_class {
 	      @FindBy(xpath="//h3[contains(text(),'No matching programs found')]")
 	      private WebElement emptymessage;
 	      
-	      @FindBy(xpath="//span[contains(text(),'Reset All Filters')]")
-	      private WebElement resetbutton;
+	      
 	      
 	      @FindBy(xpath="//span[@class='bg-surface-alt dark:bg-slate-800 px-2 py-0.5 rounded-md']")
 	      private List<WebElement> durationcourses;
@@ -96,9 +108,16 @@ public class pom_class {
 	      @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div/div[2]/main/div[1]/div/select")
 	      WebElement sortDropdown;
 
-	      @FindBy(xpath = "//h3[contains(text(),'No matching ')]")
+	      @FindBy(xpath = "//h3[normalize-space()='No matching programs found']")
 	     WebElement emptycourse;
 	      
+	      @FindBy(xpath = "//main//div[contains(@class,'grid-cols-1')]/a[contains(@class,'group') and contains(@class,'flex-col')]")
+		    private List<WebElement> coursecard ;
+	      
+	      @FindBy(xpath = "//main//a[contains(@class,'group')]//span[contains(@class,'rounded-md') and contains(@class,'capitalize')]")
+		    private List<WebElement> coursestatuses ;
+	      @FindBy(xpath = "//button[contains(text(),'Reset')]")
+		     WebElement resetbutton; 
 	      
 //	      ===============Getters=======================================
 	      public WebElement signinbutton() {
@@ -156,15 +175,27 @@ public class pom_class {
 	      public List<WebElement> getallcheckboxes() {
 	    	  return allcheckboxes;
 	      }
+	      public WebElement clickliveonline() {
+	    	  return liveonline;
+	      }
+	      public WebElement clickpersonclassroom() {
+	    	  return personclassroom;
+	      }
+	      public WebElement clickhybrid() {
+	    	  return hybrid;
+	      }
+	      public WebElement clickselfpaced() {
+	    	  return selfpaced;
+	      }
+	      
+	      
 	      public WebElement programdurationdropdown(){
 	    	  return programduration;
 	      }
 	      public WebElement emptydropdownmessage(){
 	    	  return emptymessage;
 	      }
-	      public WebElement resetcoursesbutton(){
-	    	  return resetbutton;
-	      }
+	      
 	      public List<WebElement> durationcoursescard(){
 	    	  return durationcourses;
 	      }
@@ -186,8 +217,16 @@ public class pom_class {
 	      public WebElement emptycoursemessage(){
 	    	  return emptycourse;
 	      }
+	      public List<WebElement> getcoursecards(){
+	    	  return coursecard;
+	      }
+	      public List<WebElement> getcoursestatuses(){
+	    	  return coursestatuses;
+	      }
 	    
-
+	      public WebElement clickresetbutton(){
+	    	  return resetbutton;
+	      }
 	     
 
 	     

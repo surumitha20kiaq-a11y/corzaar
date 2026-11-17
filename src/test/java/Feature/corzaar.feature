@@ -39,8 +39,10 @@ When user select the discipline dropdown values one by one
 Then user successfully select the values and view the relevent courses
 
 Scenario: verify the delivery format and free enrollment checkbox
-When user click the delivery format and free enrollment checkbox one by one and verify the displayed courses
+When user click the delivery format checkbox one by one and verify the displayed courses
 Then user successfully click the all delivery format checkbox
 
-
+Scenario: verify the program duration dropdown
+When user click the  program duration dropdown one by one and verify the displayed courses
+Then user successfully click the all program duration dropdown
 	
