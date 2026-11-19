@@ -3,13 +3,13 @@ package base;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-
+import java.util.function.Function;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.ElementClickInterceptedException;
@@ -19,9 +19,11 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 
 public class BaseClass {
 	public static WebDriver driver;
@@ -151,6 +153,34 @@ public class BaseClass {
     	  }
       }
 }
+     public static void clickFirstPaidCourse(List<WebElement> courseCards) {
+
+    	    for (WebElement card : courseCards) {
+
+    	        String priceText = card.findElement(
+    	                By.xpath(".//span[contains(@class,'font-black')]"))
+    	                .getText();
+
+    	        String amountText = priceText.replaceAll("[^0-9.]", "");
+
+    	        if (!amountText.isEmpty()) {
+
+    	            double amount = Double.parseDouble(amountText);
+
+    	            if (amount > 0) {
+
+    	                System.out.println("Selected paid course: " + priceText);
+
+    	                waitForElementToClickable(card);
+    	                clickElement(card);
+
+    	                return;
+    	            }
+    	        }
+    	    }
+
+    	    Assert.fail("No paid course found");
+    	}
      public void clickCheckbox(WebElement checkbox) {
 
     	    if (checkbox.isSelected()) {
@@ -175,6 +205,16 @@ public class BaseClass {
     	        }
     	    }
     	}
+   
+     public static boolean waitForCondition(Function<WebDriver, Boolean> condition) {
+
+ 	    FluentWait<WebDriver> fluentWait = new FluentWait<>(driver)
+ 	            .withTimeout(Duration.ofSeconds(40))
+ 	            .pollingEvery(Duration.ofSeconds(1))
+ 	            .ignoring(NoSuchElementException.class);
+
+ 	    return fluentWait.until(condition);
+ 	}
 //	--------------------Alerts------------------------------------------
 
 	public static void acceptAlert() {
@@ -297,6 +337,56 @@ public class BaseClass {
 	        }
 
 	        return values;
+	    }
+	    
+	   
+	    public boolean isDurationMatching(String filter, String actualDuration) {
+
+	        // Any Duration should accept every course
+	        if (filter.trim().equalsIgnoreCase("Any Duration")) {
+	            return true;
+	        }
+
+	        java.util.regex.Matcher matcher =
+	            java.util.regex.Pattern.compile(
+	                "(\\d+)\\s*(month|months|year|years|week|weeks)",
+	                java.util.regex.Pattern.CASE_INSENSITIVE
+	            ).matcher(actualDuration);
+
+	        if (!matcher.find()) {
+	            return false;
+	        }
+
+	        double months = Double.parseDouble(matcher.group(1));
+
+	        String unit = matcher.group(2).toLowerCase();
+
+	        if (unit.startsWith("year")) {
+	            months = months * 12;
+	        } else if (unit.startsWith("week")) {
+	            months = months / 4.345;
+	        }
+
+	        switch (filter.trim()) {
+
+	            case "Under 1 month":
+	                return months < 1;
+
+	            case "1–3 months":
+	                return months >= 1 && months <= 3;
+
+	            case "3–6 months":
+	                return months > 3 && months <= 6;
+
+	            case "6–12 months":
+	                return months > 6 && months <= 12;
+
+	            case "1+ year":
+	                return months >= 12;
+
+	            default:
+	                return false;
+	        }
 	    }
 	  public static  String getSelectedValues(By locator) {
 			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));  

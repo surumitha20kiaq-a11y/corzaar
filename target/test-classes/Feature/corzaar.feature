@@ -45,4 +45,42 @@ Then user successfully click the all delivery format checkbox
 Scenario: verify the program duration dropdown
 When user click the  program duration dropdown one by one and verify the displayed courses
 Then user successfully click the all program duration dropdown
-	
+
+Scenario: verify the free enrollment checkbox
+When user click the free enrollment checkbox one by one and verify the displayed courses
+Then user successfully click the free enrollment checkbox
+
+Scenario Outline: Verify course sorting functionality
+    When user selects "<sortValue>" from the sort dropdown
+    Then courses should be sorted correctly by "<sortValue>"
+
+Examples:
+    | sortValue          |     
+    | Highest Rated      |
+    | Newest Releases    |
+    | Price: Low to High |
+    | Price: High to Low |
+    | Most Enrolled     |
+    
+Scenario Outline: Verify course, skill and institute search functionality
+When user searches for "<searchType>" using "<searchText>"
+Then user should verify the "<expectedResult>" search result for "<searchType>" using "<searchText>"
+Examples:
+    | searchType | searchText                | expectedResult |
+    | Course     | UI UX Design Fundamentals | Valid          |
+    | Course     | InvalidCourse12345        | Invalid        |
+    | Skill      | UI UX Design              | Valid          |
+    | Skill      | InvalidSkill12345         | Invalid        |
+    | Institute  | My institute              | Valid          |
+    | Institute  | 12345                     | Invalid        |	
+    
+Scenario: Verify paid course enrollment page navigation
+     When user selects a paid course
+    And user clicks the Enroll Immediately button
+    Then user should navigate to Review Your Enrollment page
+    
+ Scenario: Verify offer cards and copy coupon functionality
+   When user navigates to the Offers module
+    Then user should verify coupon code, percentage, active status and copy button
+    When user clicks the Copy button for an offer
+    Then user should see the coupon copied success message

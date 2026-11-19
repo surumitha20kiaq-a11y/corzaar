@@ -2,6 +2,7 @@ package pom;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,8 @@ public class pom_class {
 	      
 	      @FindBy(xpath="//button[contains(text(),'Auto-Fill Demo')]")
 	      private WebElement autofilldemo;
+	      
+
 	      
 	      @FindBy(xpath="//button[@type='submit']")
 	      private WebElement sendonetimepasscode;
@@ -93,10 +96,10 @@ public class pom_class {
 	      @FindBy(xpath="//span[@class='bg-surface-alt dark:bg-slate-800 px-2 py-0.5 rounded-md']")
 	      private List<WebElement> durationcourses;
 	      
-	      @FindBy(xpath="//*[@id=\"root\"]/div[1]/main/div/div[2]/aside/div/div[5]/div/label/div[1]/div")
+	      @FindBy(xpath="//label[.//input[@id='free-enrollment-only']]")
 	      private WebElement freeenrollment;
 	      
-	      @FindBy(xpath="//span[contains(text(),'Free')]")
+	      @FindBy(xpath="//main//a[contains(@class,'group')]//span[normalize-space()='Free']")
 	      private List<WebElement> freecourses;
 	      
 	      @FindBy(xpath="//button[contains(text(),'Reset')]")
@@ -118,6 +121,65 @@ public class pom_class {
 		    private List<WebElement> coursestatuses ;
 	      @FindBy(xpath = "//button[contains(text(),'Reset')]")
 		     WebElement resetbutton; 
+	      
+	      @FindBy(xpath = "//main//a[contains(@class,'group')]//div[contains(@class,'mt-3')  and  contains(@class,'flex')]/span[1]")
+		    private List<WebElement> courseduration ;
+	      
+	      @FindBy(xpath = "//select[option[@value='under_1m']]")
+		     WebElement selectprogram; 
+	      
+	      @FindBy(id = "learner-mobile-number")
+		     WebElement mobilenumber;
+	      
+	      @FindBy(id = "full-name-(optional-for-existing-learners)")
+		     WebElement name;
+	      
+	      @FindBy(id = "enter-6-digit-passcode")
+		     WebElement otpfield;
+	      
+	      @FindBy(xpath = "//select[.//option[contains(.,'Recommended')]]")
+		     WebElement recommended;
+	      
+	      @FindBy(xpath = "//main//a[contains(@class,'group')]//div[contains(@class,'inline-flex') and contains(@class,'items-center')]//span[contains(@class,'font-bold')]")
+		    private List<WebElement> courseratings ;
+	      
+	      @FindBy(xpath = "//main//a[contains(@class,'group')]//span[contains(@class,'font-black') and contains(normalize-space(),'₹')]")
+	      private List<WebElement> courseprices;
+	      
+	      @FindBy(xpath = "//main//a[contains(@class,'group')]//span[contains(@class,'font-medium') and contains(@class,'truncate')]")
+	      private List<WebElement> institutename;
+	      
+	      @FindBy(xpath = "//main//a[contains(@class,'group')]//h3")
+	      private List<WebElement> coursenames; 
+	      
+	      @FindBy(xpath = "//input[@placeholder='Search courses, skills, institutes...']")
+		     WebElement searchfield;
+	      
+	      @FindBy(xpath = "//main//a[contains(@class,'group')]//div[contains(@class,'flex-wrap')]/span")
+	      private List<WebElement> courseskills;
+	      
+	      @FindBy(xpath = "//button[contains(normalize-space(.),'Enroll Immediately')]")
+	      private WebElement enrollImmediately;
+	      
+	      @FindBy(xpath = "//*[self::h1 or self::h2 or self::h3][contains(normalize-space(.),'Review Your Enrollment')]")
+	      private WebElement reviewEnrollment;
+	      
+	      @FindBy(xpath = "//main//a[contains(@class,'group')]")
+	      private List<WebElement> courseCards;
+	      
+	      @FindBy(xpath = "//a[normalize-space()='Offers' or .//span[normalize-space()='Offers']]")
+	      private WebElement offersModule;
+	      
+	      @FindBy(xpath = "//button[normalize-space()='Copy']/ancestor::div[contains(@class,'rounded') and contains(@class,'border')][1]")
+	      private List<WebElement> offerCards;
+	      
+	      public WebElement getCopyButton(WebElement card) {
+	    	    return card.findElement(
+	    	        By.xpath(".//button[contains(normalize-space(.),'Copy')]")
+	    	    );
+	    	    }
+	      @FindBy(xpath = "//h4[normalize-space()='Copied to Clipboard!']")
+  	    private WebElement copyMessage;
 	      
 //	      ===============Getters=======================================
 	      public WebElement signinbutton() {
@@ -227,9 +289,60 @@ public class pom_class {
 	      public WebElement clickresetbutton(){
 	    	  return resetbutton;
 	      }
+	      public List<WebElement> coursedurationcards(){
+	    	  return courseduration;
+	      }
+	      public WebElement selectprogramduration(){
+	    	  return selectprogram;
+	      }
+	      
+	      public WebElement mobilenumberfield(){
+	    	  return mobilenumber;
+	      }
+	      public WebElement namefield(){
+	    	  return name;
+	      }
+	      public WebElement sendotp(){
+	    	  return otpfield;
+	      }
+	      public WebElement recommendedDropdown(){
+	    	  return recommended;
+	      }
 	     
-
-	     
-
-
+	      public List<WebElement> getcourseratings (){
+	    	  return courseratings;
+	      }
+	      public List<WebElement> getCoursePrices() {
+	    	    return courseprices;
+	    	}
+	      public List<WebElement> getInstituteName() {
+	    	    return institutename;
+	    	}
+	      public List<WebElement> getCourseNames() {
+	    	    return coursenames;
+	    	}
+	      public WebElement sendsearchfield(){
+	    	  return searchfield;
+	      }
+	      public List<WebElement> getCourseSkills() {
+	    	    return courseskills;
+	    	}
+	      public WebElement getEnrollImmediately() {
+	    	    return enrollImmediately;
+	    	}
+	      public WebElement getReviewEnrollment() {
+	    	    return reviewEnrollment;
+	    	}
+	      public List<WebElement> getCourseCards() {
+	    	    return courseCards;
+	    	}
+	      public WebElement getOffersModule() {
+	    	    return offersModule;
+	    	}
+	      public List<WebElement> getOfferCards() {
+	    	    return offerCards;
+	    	}
+	      public WebElement getCopyMessage() {
+	    	    return copyMessage;
+	    	}
 }

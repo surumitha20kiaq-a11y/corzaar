@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>12/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>23/4/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Nov 17 17:48:15 IST 2026</td>
+<td>Started on:</td><td>Thu Nov 19 16:28:39 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>35 seconds (35203 ms)</td>
+<tr><td>Total time:</td><td>141 seconds (141663 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,249 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify offer cards and copy coupon functionality", "student login and course exploration"</td>
+<td><div><pre>java.lang.AssertionError: Coupon percentage is missing expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at step.StepDefinition.user_should_verify_coupon_code_percentage_active_status_and_copy_button(StepDefinition.java:455)
+	at ✽.user should verify coupon code, percentage, active status and copy button(file:///C:/Users/admin/eclipse-workspace/Corzaar/src/test/java/Feature/corzaar.feature:84)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1678404939", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1678404939'><pre>java.lang.AssertionError: Coupon percentage is missing expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at step.StepDefinition.user_should_verify_coupon_code_percentage_active_status_and_copy_button(StepDefinition.java:455)
+	at ✽.user should verify coupon code, percentage, active status and copy button(file:///C:/Users/admin/eclipse-workspace/Corzaar/src/test/java/Feature/corzaar.feature:84)
+</pre></div></td>
+<td>0</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course, skill and institute search functionality", "student login and course exploration"</td>
+<td><div><pre>java.lang.AssertionError: Incorrect institute displayed: Partner Institute expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at step.StepDefinition.user_should_verify_the_search_result_for_using(StepDefinition.java:396)
+	at ✽.user should verify the &quot;Valid&quot; search result for &quot;Skill&quot; using &quot;UI UX Design&quot;(file:///C:/Users/admin/eclipse-workspace/Corzaar/src/test/java/Feature/corzaar.feature:67)
+</pre></div><a href='#' onClick='toggleBox("stack-trace937726434", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace937726434'><pre>java.lang.AssertionError: Incorrect institute displayed: Partner Institute expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at step.StepDefinition.user_should_verify_the_search_result_for_using(StepDefinition.java:396)
+	at ✽.user should verify the &quot;Valid&quot; search result for &quot;Skill&quot; using &quot;UI UX Design&quot;(file:///C:/Users/admin/eclipse-workspace/Corzaar/src/test/java/Feature/corzaar.feature:67)
+</pre></div></td>
+<td>2</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify paid course enrollment page navigation", "student login and course exploration"</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //*[self::h1 or self::h2 or self::h3][contains(normalize-space(.),&apos;Review Your Enrollment&apos;)]&apos; (tried for 40 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at base.BaseClass.waitForvisibility(BaseClass.java:134)
+	at step.StepDefinition.user_should_navigate_to_review_your_enrollment_page(StepDefinition.java:430)
+	at ✽.user should navigate to Review Your Enrollment page(file:///C:/Users/admin/eclipse-workspace/Corzaar/src/test/java/Feature/corzaar.feature:80)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[self::h1 or self::h2 or self::h3][contains(normalize-space(.),&apos;Review Your Enrollment&apos;)]&quot;}
+  (Session info: chrome=157.0.8103.79)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.11&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [04703a6790ec92cbe9a50ab3dea8a08f, findElement {using=xpath, value=//*[self::h1 or self::h2 or self::h3][contains(normalize-space(.),&apos;Review Your Enrollment&apos;)]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 157.0.8103.79, chrome: {chromedriverVersion: 157.0.8103.78 (4b3d0dabb825..., userDataDir: C:\Users\admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61479}, goog:processID: 14552, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61479/devtoo..., se:cdpVersion: 157.0.8103.79, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10...., webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 04703a6790ec92cbe9a50ab3dea8a08f
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+	at base.BaseClass.waitForvisibility(BaseClass.java:134)
+	at step.StepDefinition.user_should_navigate_to_review_your_enrollment_page(StepDefinition.java:430)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1654056127", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1654056127'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //*[self::h1 or self::h2 or self::h3][contains(normalize-space(.),&apos;Review Your Enrollment&apos;)]&apos; (tried for 40 second(s) with 500 milliseconds interval)
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at base.BaseClass.waitForvisibility(BaseClass.java:134)
+	at step.StepDefinition.user_should_navigate_to_review_your_enrollment_page(StepDefinition.java:430)
+	at ✽.user should navigate to Review Your Enrollment page(file:///C:/Users/admin/eclipse-workspace/Corzaar/src/test/java/Feature/corzaar.feature:80)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[self::h1 or self::h2 or self::h3][contains(normalize-space(.),&apos;Review Your Enrollment&apos;)]&quot;}
+  (Session info: chrome=157.0.8103.79)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.11&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [04703a6790ec92cbe9a50ab3dea8a08f, findElement {using=xpath, value=//*[self::h1 or self::h2 or self::h3][contains(normalize-space(.),&apos;Review Your Enrollment&apos;)]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 157.0.8103.79, chrome: {chromedriverVersion: 157.0.8103.78 (4b3d0dabb825..., userDataDir: C:\Users\admin\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61479}, goog:processID: 14552, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61479/devtoo..., se:cdpVersion: 157.0.8103.79, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10...., webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 04703a6790ec92cbe9a50ab3dea8a08f
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:518)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:355)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:349)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.isDisplayed(Unknown Source)
+	at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
+	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+	at base.BaseClass.waitForvisibility(BaseClass.java:134)
+	at step.StepDefinition.user_should_navigate_to_review_your_enrollment_page(StepDefinition.java:430)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at io.cucumber.java.Invoker.doInvoke(Invoker.java:66)
+	at io.cucumber.java.Invoker.invoke(Invoker.java:24)
+	at io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)
+	at io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)
+	at io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)
+	at io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)
+	at io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)
+	at io.cucumber.core.runner.TestStep.executeStep(TestStep.java:84)
+	at io.cucumber.core.runner.TestStep.run(TestStep.java:56)
+	at io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)
+	at io.cucumber.core.runner.TestCase.run(TestCase.java:84)
+	at io.cucumber.core.runner.Runner.runPickle(Runner.java:75)
+	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:132)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+	at org.testng.TestNG.runSuites(TestNG.java:1112)
+	at org.testng.TestNG.run(TestNG.java:1079)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>43</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course, skill and institute search functionality", "student login and course exploration"</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for step.StepDefinition$$Lambda/0x0000013fdb395008@663622b1 (tried for 40 second(s) with 1000 milliseconds interval)
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.11&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:265)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at base.BaseClass.waitForCondition(BaseClass.java:216)
+	at step.StepDefinition.user_should_verify_the_search_result_for_using(StepDefinition.java:389)
+	at ✽.user should verify the &quot;Valid&quot; search result for &quot;Institute&quot; using &quot;My institute&quot;(file:///C:/Users/admin/eclipse-workspace/Corzaar/src/test/java/Feature/corzaar.feature:67)
+</pre></div><a href='#' onClick='toggleBox("stack-trace965869165", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace965869165'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for step.StepDefinition$$Lambda/0x0000013fdb395008@663622b1 (tried for 40 second(s) with 1000 milliseconds interval)
+Build info: version: &apos;4.21.0&apos;, revision: &apos;79ed462ef4&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.11&apos;
+Driver info: driver.version: unknown
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:265)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at base.BaseClass.waitForCondition(BaseClass.java:216)
+	at step.StepDefinition.user_should_verify_the_search_result_for_using(StepDefinition.java:389)
+	at ✽.user should verify the &quot;Valid&quot; search result for &quot;Institute&quot; using &quot;My institute&quot;(file:///C:/Users/admin/eclipse-workspace/Corzaar/src/test/java/Feature/corzaar.feature:67)
+</pre></div></td>
+<td>41</td>
+<td>test.TestRunner@28975c28</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,9 +319,49 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify full name field with invalid names", "student login and course exploration"</td>
+<td></td>
+<td>0</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
 <td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify the delivery format and free enrollment checkbox", "student login and course exploration"</td>
 <td></td>
 <td>9</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course, skill and institute search functionality", "student login and course exploration"</td>
+<td></td>
+<td>2</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify full name field with invalid names", "student login and course exploration"</td>
+<td></td>
+<td>0</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify the learner login page with valid credentials", "student login and course exploration"</td>
+<td></td>
+<td>1</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify the free enrollment checkbox", "student login and course exploration"</td>
+<td></td>
+<td>2</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify the public user access courses module", "student login and course exploration"</td>
+<td></td>
+<td>0</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course, skill and institute search functionality", "student login and course exploration"</td>
+<td></td>
+<td>1</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify student cannot login with invalid mobile numbers", "student login and course exploration"</td>
+<td></td>
+<td>1</td>
 <td>test.TestRunner@28975c28</td></tr>
 <tr>
 <td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify student cannot login with invalid mobile numbers", "student login and course exploration"</td>
@@ -91,14 +374,9 @@ function toggleAllBoxes() {
 <td>2</td>
 <td>test.TestRunner@28975c28</td></tr>
 <tr>
-<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify the learner login page with valid credentials", "student login and course exploration"</td>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course sorting functionality", "student login and course exploration"</td>
 <td></td>
 <td>1</td>
-<td>test.TestRunner@28975c28</td></tr>
-<tr>
-<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify full name field with invalid names", "student login and course exploration"</td>
-<td></td>
-<td>0</td>
 <td>test.TestRunner@28975c28</td></tr>
 <tr>
 <td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify student cannot login with invalid mobile numbers", "student login and course exploration"</td>
@@ -106,19 +384,9 @@ function toggleAllBoxes() {
 <td>1</td>
 <td>test.TestRunner@28975c28</td></tr>
 <tr>
-<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify full name field with invalid names", "student login and course exploration"</td>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course sorting functionality", "student login and course exploration"</td>
 <td></td>
 <td>0</td>
-<td>test.TestRunner@28975c28</td></tr>
-<tr>
-<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify the public user access courses module", "student login and course exploration"</td>
-<td></td>
-<td>0</td>
-<td>test.TestRunner@28975c28</td></tr>
-<tr>
-<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify student cannot login with invalid mobile numbers", "student login and course exploration"</td>
-<td></td>
-<td>1</td>
 <td>test.TestRunner@28975c28</td></tr>
 <tr>
 <td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify full name field with invalid names", "student login and course exploration"</td>
@@ -126,14 +394,44 @@ function toggleAllBoxes() {
 <td>0</td>
 <td>test.TestRunner@28975c28</td></tr>
 <tr>
-<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify student cannot login with invalid mobile numbers", "student login and course exploration"</td>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course sorting functionality", "student login and course exploration"</td>
 <td></td>
 <td>1</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify student cannot login with invalid mobile numbers", "student login and course exploration"</td>
+<td></td>
+<td>0</td>
 <td>test.TestRunner@28975c28</td></tr>
 <tr>
 <td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify the discipline dropdown values clickable and relevent courses displayed", "student login and course exploration"</td>
 <td></td>
 <td>7</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "verify the program duration dropdown", "student login and course exploration"</td>
+<td></td>
+<td>7</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course sorting functionality", "student login and course exploration"</td>
+<td></td>
+<td>0</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course, skill and institute search functionality", "student login and course exploration"</td>
+<td></td>
+<td>1</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course sorting functionality", "student login and course exploration"</td>
+<td></td>
+<td>1</td>
+<td>test.TestRunner@28975c28</td></tr>
+<tr>
+<td title='test.TestRunner.runScenario()'><b>runScenario</b><br>Test class: test.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify course, skill and institute search functionality", "student login and course exploration"</td>
+<td></td>
+<td>1</td>
 <td>test.TestRunner@28975c28</td></tr>
 </table><p>
 </body>
